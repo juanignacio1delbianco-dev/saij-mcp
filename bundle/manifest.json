@@ -1,0 +1,45 @@
+{
+  "manifest_version": "0.4",
+  "name": "saij",
+  "display_name": "SAIJ — Jurisprudencia Argentina",
+  "version": "0.1.0",
+  "description": "Buscá fallos, legislación, sumarios y doctrina en el Sistema Argentino de Información Jurídica (SAIJ) desde Claude.",
+  "long_description": "Servidor MCP que conecta Claude con la base de datos jurídica oficial de Argentina (SAIJ). Permite buscar jurisprudencia por carátula, explorar sumarios con descriptores del tesauro legal, obtener metadatos completos de fallos y sentencias, y acceder a legislación nacional y provincial. No requiere autenticación ni API key.",
+  "author": {
+    "name": "Hernán Carlos Caravario",
+    "email": "hernan@caravario.ar",
+    "url": "https://github.com/hernan-cc"
+  },
+  "server": {
+    "type": "uv",
+    "entry_point": "src/server.py",
+    "mcp_config": {
+      "command": "uvx",
+      "args": ["saij-mcp"]
+    }
+  },
+  "tools": [
+    {
+      "name": "saij_search",
+      "description": "Buscar documentos jurídicos en SAIJ: fallos, sumarios, legislación, doctrina, dictámenes"
+    },
+    {
+      "name": "saij_get_document",
+      "description": "Obtener metadatos completos de un documento por ID SAIJ (ej. FA20000057)"
+    },
+    {
+      "name": "saij_get_sumarios",
+      "description": "Obtener todos los sumarios vinculados a un fallo con descriptores del tesauro"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hernan-cc/saij-mcp"
+  },
+  "homepage": "https://github.com/hernan-cc/saij-mcp",
+  "keywords": ["legal", "argentina", "jurisprudencia", "derecho", "saij", "fallos", "legislación"],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"]
+  }
+}

@@ -11,6 +11,10 @@ Hacé click en el botón de tu editor:
 [<img src="https://img.shields.io/badge/VS_Code-Instalar_MCP-0098FF?style=for-the-badge&logo=visualstudiocode&logoColor=ffffff" alt="Instalar en VS Code">](https://insiders.vscode.dev/redirect/mcp/install?name=saij&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22saij-mcp%22%5D%7D)
 [<img src="https://img.shields.io/badge/Cursor-Instalar_MCP-F14A2D?style=for-the-badge&logo=cursor&logoColor=ffffff" alt="Instalar en Cursor">](cursor://anysphere.cursor-deeplink/mcp/install?name=saij&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22saij-mcp%22%5D%7D)
 
+### Claude Desktop (extensión .mcpb)
+
+Descargá [`saij-0.1.0.mcpb`](https://github.com/hernan-cc/saij-mcp/releases/latest/download/saij-0.1.0.mcpb) y abrilo — Claude Desktop lo instala automáticamente.
+
 ### Claude Code
 
 ```bash
