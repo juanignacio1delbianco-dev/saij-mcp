@@ -51,6 +51,19 @@ Agregar a `~/.codeium/windsurf/mcp_config.json`:
 }
 ```
 
+### Claude Cowork
+
+Desde el chat:
+
+```
+/plugin marketplace add hernan-cc/claude-plugins
+/plugin install saij@hernan-cc
+```
+
+### ChatGPT
+
+ChatGPT solo soporta MCP servers remotos (HTTP), no locales. saij-mcp hoy corre en modo stdio (local). Para usarlo con ChatGPT necesitás exponerlo como servidor HTTP con un túnel (ej. ngrok) o desplegarlo en un servidor propio. Estamos trabajando en una versión remota.
+
 ### pip / uvx
 
 ```bash
