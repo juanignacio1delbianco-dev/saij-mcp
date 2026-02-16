@@ -2,29 +2,20 @@
 
 Servidor MCP para buscar en [SAIJ](https://www.saij.gob.ar/) (Sistema Argentino de Información Jurídica), la base de datos jurídica oficial de Argentina.
 
-Permite que cualquier cliente de IA (Claude Desktop, Cursor, Windsurf, Claude Code, etc.) busque y recupere fallos, legislación, sumarios y doctrina argentina.
+Permite que cualquier cliente de IA (Claude Desktop, Cursor, Windsurf, VS Code, Claude Code, etc.) busque y recupere fallos, legislación, sumarios y doctrina argentina.
 
-## Herramientas
+## Instalación rápida
 
-| Herramienta | Descripción |
-|-------------|-------------|
-| `saij_search` | Buscar por palabras clave en fallos, sumarios, legislación, doctrina |
-| `saij_get_document` | Obtener metadatos completos de un documento por ID SAIJ (ej. `FA20000057`) |
-| `saij_get_sumarios` | Obtener todos los sumarios vinculados a un fallo |
+Hacé click en el botón de tu editor:
 
-## Instalación
+[<img src="https://img.shields.io/badge/VS_Code-Instalar_MCP-0098FF?style=for-the-badge&logo=visualstudiocode&logoColor=ffffff" alt="Instalar en VS Code">](https://insiders.vscode.dev/redirect/mcp/install?name=saij&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22saij-mcp%22%5D%7D)
+[<img src="https://img.shields.io/badge/Cursor-Instalar_MCP-F14A2D?style=for-the-badge&logo=cursor&logoColor=ffffff" alt="Instalar en Cursor">](cursor://anysphere.cursor-deeplink/mcp/install?name=saij&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22saij-mcp%22%5D%7D)
 
-```bash
-pip install saij-mcp
-```
-
-O ejecutar directamente con `uvx`:
+### Claude Code
 
 ```bash
-uvx saij-mcp
+claude mcp add saij -- uvx saij-mcp
 ```
-
-## Configuración
 
 ### Claude Desktop
 
@@ -41,15 +32,9 @@ Agregar a `claude_desktop_config.json`:
 }
 ```
 
-### Claude Code
+### Windsurf
 
-```bash
-claude mcp add saij -- uvx saij-mcp
-```
-
-### Cursor / Windsurf
-
-Agregar a la configuración MCP:
+Agregar a `~/.codeium/windsurf/mcp_config.json`:
 
 ```json
 {
@@ -61,6 +46,23 @@ Agregar a la configuración MCP:
   }
 }
 ```
+
+### pip / uvx
+
+```bash
+pip install saij-mcp    # instalar globalmente
+uvx saij-mcp            # ejecutar sin instalar
+```
+
+> Requiere [uv](https://docs.astral.sh/uv/getting-started/installation/) para `uvx`, o Python 3.10+ para `pip`.
+
+## Herramientas
+
+| Herramienta | Descripción |
+|-------------|-------------|
+| `saij_search` | Buscar por palabras clave en fallos, sumarios, legislación, doctrina |
+| `saij_get_document` | Obtener metadatos completos de un documento por ID SAIJ (ej. `FA20000057`) |
+| `saij_get_sumarios` | Obtener todos los sumarios vinculados a un fallo |
 
 ## Ejemplos de uso
 
