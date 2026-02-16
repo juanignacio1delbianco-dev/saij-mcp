@@ -1,34 +1,34 @@
 # saij-mcp
 
-MCP server for searching [SAIJ](https://www.saij.gob.ar/) (Sistema Argentino de Información Jurídica) — Argentina's official legal information system.
+Servidor MCP para buscar en [SAIJ](https://www.saij.gob.ar/) (Sistema Argentino de Información Jurídica), la base de datos jurídica oficial de Argentina.
 
-Gives any AI client (Claude Desktop, Cursor, Windsurf, Claude Code, etc.) the ability to search and retrieve Argentine court decisions, legislation, legal summaries, and doctrine.
+Permite que cualquier cliente de IA (Claude Desktop, Cursor, Windsurf, Claude Code, etc.) busque y recupere fallos, legislación, sumarios y doctrina argentina.
 
-## Tools
+## Herramientas
 
-| Tool | Description |
-|------|-------------|
-| `saij_search` | Search by keywords across fallos, sumarios, legislation, doctrine |
-| `saij_get_document` | Get full document metadata by SAIJ ID (e.g. `FA20000057`) |
-| `saij_get_sumarios` | Get all legal summaries linked to a court decision |
+| Herramienta | Descripción |
+|-------------|-------------|
+| `saij_search` | Buscar por palabras clave en fallos, sumarios, legislación, doctrina |
+| `saij_get_document` | Obtener metadatos completos de un documento por ID SAIJ (ej. `FA20000057`) |
+| `saij_get_sumarios` | Obtener todos los sumarios vinculados a un fallo |
 
-## Install
+## Instalación
 
 ```bash
 pip install saij-mcp
 ```
 
-Or run directly with `uvx`:
+O ejecutar directamente con `uvx`:
 
 ```bash
 uvx saij-mcp
 ```
 
-## Configure
+## Configuración
 
 ### Claude Desktop
 
-Add to `claude_desktop_config.json`:
+Agregar a `claude_desktop_config.json`:
 
 ```json
 {
@@ -49,7 +49,7 @@ claude mcp add saij -- uvx saij-mcp
 
 ### Cursor / Windsurf
 
-Add to your MCP config:
+Agregar a la configuración MCP:
 
 ```json
 {
@@ -62,50 +62,50 @@ Add to your MCP config:
 }
 ```
 
-## Usage examples
+## Ejemplos de uso
 
-Once configured, your AI client can:
+Una vez configurado, tu cliente de IA puede:
 
-- **"Buscame jurisprudencia sobre phishing bancario"** — searches sumarios with thesaurus-tagged legal topics
-- **"Qué dice el fallo FA20000057?"** — retrieves full case metadata, tribunal, date, magistrates
-- **"Dame los sumarios del fallo FA20000057"** — returns all legal principles extracted from the decision
-- **"Buscá leyes sobre defensa del consumidor"** — searches legislation by title
+- **"Buscame jurisprudencia sobre phishing bancario"** — busca sumarios con descriptores del tesauro jurídico
+- **"Qué dice el fallo FA20000057?"** — recupera metadatos completos: tribunal, fecha, magistrados
+- **"Dame los sumarios del fallo FA20000057"** — devuelve todos los principios jurídicos extraídos del fallo
+- **"Buscá leyes sobre defensa del consumidor"** — busca legislación por título
 
-### Search fields
+### Campos de búsqueda
 
-| Field | Works with | Description |
-|-------|-----------|-------------|
-| `titulo` | Everything | Search by document title (default) |
-| `texto` | Sumarios only | Full-text search in summary body |
+| Campo | Funciona con | Descripción |
+|-------|-------------|-------------|
+| `titulo` | Todo | Busca por título del documento (default) |
+| `texto` | Solo sumarios | Búsqueda en el cuerpo del sumario |
 
-### Document types
+### Tipos de documento
 
-| Type | Description |
+| Tipo | Descripción |
 |------|-------------|
-| `fallo` | Court decisions (default) |
-| `sumario` | Case summaries with thesaurus descriptors |
-| `jurisprudencia` | Both fallos and sumarios |
-| `legislacion` | All legislation |
-| `ley` | Laws |
-| `decreto` | Decrees |
-| `doctrina` | Legal doctrine and articles |
-| `dictamen` | Official legal opinions |
-| `todo` | All types |
+| `fallo` | Sentencias y resoluciones judiciales (default) |
+| `sumario` | Resúmenes con descriptores del tesauro |
+| `jurisprudencia` | Fallos y sumarios |
+| `legislacion` | Toda la legislación |
+| `ley` | Leyes |
+| `decreto` | Decretos |
+| `doctrina` | Doctrina y artículos jurídicos |
+| `dictamen` | Dictámenes |
+| `todo` | Todos los tipos |
 
-## How it works
+## Cómo funciona
 
-SAIJ exposes a public JSON API (no authentication required). This server wraps it with proper tool descriptions so AI clients can search effectively.
+SAIJ expone una API JSON pública (sin autenticación). Este servidor la envuelve con descripciones de herramientas MCP para que los clientes de IA puedan buscar de forma efectiva.
 
-The API uses Lucene-style query syntax internally. The server handles query construction, facet filtering, and response parsing.
+La API usa sintaxis de consulta tipo Lucene internamente. El servidor se encarga de construir las queries, filtrar por facetas y parsear las respuestas.
 
-Sumarios are particularly useful — they contain legal principles extracted from court decisions, tagged with a hierarchical legal thesaurus (descriptors). These tags enable semantic legal search even without embeddings.
+Los sumarios son particularmente útiles: contienen principios jurídicos extraídos de los fallos, etiquetados con un tesauro jerárquico de descriptores. Estos descriptores permiten búsqueda semántica legal incluso sin embeddings.
 
-## Limitations
+## Limitaciones
 
-- **Fallo full text is PDF-only** — the API returns metadata and related sumarios, but the actual decision text is in an attached PDF. Use `pdf_url` from `saij_get_document` to download it.
-- **`texto` field only searches sumarios** — for fallos, search by `titulo` (case caption).
-- **No rate limiting detected**, but be respectful with request volume.
+- **El texto completo de los fallos es solo PDF** — la API devuelve metadatos y sumarios vinculados, pero el texto de la sentencia está en un PDF adjunto. Usá `pdf_url` de `saij_get_document` para descargarlo.
+- **El campo `texto` solo busca en sumarios** — para fallos, buscá por `titulo` (carátula).
+- **No se detectó rate limiting**, pero usá con moderación.
 
-## License
+## Licencia
 
 MIT
