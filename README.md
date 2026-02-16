@@ -115,3 +115,5 @@ Los sumarios son particularmente útiles: contienen principios jurídicos extra�
 ## Licencia
 
 MIT
+
+<!-- mcp-name: io.github.hernan-cc/saij-mcp -->

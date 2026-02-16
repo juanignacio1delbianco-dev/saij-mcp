@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "saij-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Servidor MCP para buscar en SAIJ (Sistema Argentino de Información Jurídica) — fallos, legislación, sumarios y doctrina"
 readme = "README.md"
 license = "MIT"
