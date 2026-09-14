@@ -6,6 +6,7 @@ import json
 import os
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 from . import __version__
 from .client import (
@@ -23,7 +24,12 @@ mcp = FastMCP(
         "Argentina's official legal information system. "
         "Access court decisions, legislation, legal summaries, and doctrine."
     ),
+    transport_security=TransportSecuritySettings(
+        allowed_hosts=["*"],
+        allowed_origins=["*"],
+    ),
 )
+  
 
 
 @mcp.tool()
