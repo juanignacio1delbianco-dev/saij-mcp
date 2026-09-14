@@ -131,6 +131,7 @@ def main():
     """Run the SAIJ MCP server."""
     mcp.settings.host = "0.0.0.0"
     mcp.settings.port = int(os.environ.get("PORT", 8000))
+    mcp.settings.streamable_http_path = "/mcp"
     mcp.run(transport="streamable-http")
 
 
