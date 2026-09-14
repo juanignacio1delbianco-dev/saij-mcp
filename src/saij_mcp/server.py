@@ -127,10 +127,11 @@ def saij_get_sumarios(fallo_id: str) -> str:
     except SAIJError as e:
         return json.dumps({"error": str(e)}, ensure_ascii=False)
 
-
 def main():
     """Run the SAIJ MCP server."""
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+    mcp.settings.host = "0.0.0.0"
+    mcp.settings.port = int(os.environ.get("PORT", 8000))
+    mcp.run(transport="streamable-http")
 
 
 if __name__ == "__main__":
