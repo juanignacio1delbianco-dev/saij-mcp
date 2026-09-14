@@ -138,7 +138,8 @@ def main():
     mcp.settings.host = "0.0.0.0"
     mcp.settings.port = int(os.environ.get("PORT", 8000))
     mcp.settings.streamable_http_path = "/mcp"
-    mcp.run(transport="streamable-http")
+    import uvicorn
+    uvicorn.run(mcp.streamable_http_app(), host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
 
 
 if __name__ == "__main__":
