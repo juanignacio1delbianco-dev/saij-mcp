@@ -8,8 +8,12 @@ import os
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
 
-from . import __version__
-from .client import (
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from saij_mcp import __version__
+from saij_mcp.client import (
     VALID_DOC_TYPES,
     SAIJError,
     get_document,
