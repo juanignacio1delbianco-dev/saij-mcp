@@ -29,7 +29,8 @@ mcp = FastMCP(
         "Access court decisions, legislation, legal summaries, and doctrine."
     ),
 )
-mcp.settings.transport_security = TransportSecuritySettings(allowed_hosts=["*"], allowed_origins=["*"])  
+from mcp.server.transport_security import TransportSecurityMiddleware
+TransportSecurityMiddleware._validate_host = lambda self, host: True
 
 
 @mcp.tool()
