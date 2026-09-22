@@ -28,12 +28,8 @@ mcp = FastMCP(
         "Argentina's official legal information system. "
         "Access court decisions, legislation, legal summaries, and doctrine."
     ),
-    transport_security=TransportSecuritySettings(
-        allowed_hosts=["*"],
-        allowed_origins=["*"],
-    ),
 )
-  
+mcp.settings.transport_security = TransportSecuritySettings(allowed_hosts=["*"], allowed_origins=["*"])  
 
 
 @mcp.tool()
